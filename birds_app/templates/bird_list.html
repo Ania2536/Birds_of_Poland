@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+
+<div class="container">
+      <center><h1>Birds of Poland</h1></center>
+      </div>
+
+<section class="div-layout">
+    {% for bird in birds %}
+<div class="card" style="width: 17rem; margin: 10px">
+    <img src="{{ bird.get_main_image_url }}" class="card-img-top" alt="Bird"/>
+    <div class="card-body">
+    <h5 class="card-title">{{ bird.name }}</h5>
+    <a href="/birds_app/bird/{{ bird.id }}" class="btn btn-outline-dark">Read more!</a>
+    </div>
+</div>
+    {% endfor %}
+</section>
+
+    {% if user.is_authenticated %}
+<center>
+        <a href="/birds_app/add-bird/">
+<button class="button3">Add bird</button>
+</a></center>
+    {% endif %}
+
+{% endblock %}

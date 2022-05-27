@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+
+<section class="detail-bird-layout">
+
+<ul>
+    <center><h2 style="margin: 20px">{{ bird.name }} </h2></center>
+    <li style="margin: 10px"><b>Description:</b> {{ bird.description }}</li>
+    <li style="margin: 10px"><b>Family:</b> {{ bird.family }}</li>
+    <li style="margin: 10px"><b>Population:</b> {{ bird.population }}</li>
+</ul>
+
+    <div>
+    <img src="{{ bird.get_main_image_url }}" style="width: 100%; float: left; margin-right: 10px;"/>
+</div>
+
+</section>
+{% if user.is_superuser %}
+<a href="/birds_app/bird/{{ bird.id }}/edit/">
+<button class="button2">Edit bird</button></a>
+    {% endif %}
+
+<a href="{% url 'wish-list' %}">
+<button class="button2" id="wishlist">Add to your Wishlist</button></a>
+
+
+        <a href="/birds_app/bird/{{ bird.id }}/comment/">
+<button class="button2">Add comment</button></a>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+{{ form.as_p }}
+<input type="submit">
+</form>
+
+<section>
+    <div style="width: 30%; margin: 10px; padding: 5px; font-weight: bold; box-shadow: #444444 2px 3px; border: #666666 ">Users Comments</div>
+    {% for comment in comments %}
+
+    <div style="width: 30%; margin: 10px; padding: 5px; font-weight: bold; box-shadow: #444444 2px 3px; border: #666666 ">Autor: {{ comment.author }}</div>
+    <div style="width: 30%; height: fit-content; margin: 10px; padding: 5px; box-shadow: #444444 2px 3px; border: #666666 ">{{ comment.text }}</div>
+
+    {% endfor %}
+</section>
+
+{% endblock %}

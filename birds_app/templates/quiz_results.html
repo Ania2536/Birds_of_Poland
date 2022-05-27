@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+
+<div class="container" style="margin: 20px">
+    <div style="padding: 10px; margin: 10px;">
+        <div align="centre" style="width: 32rem">
+                <h4 class="card-title"><b>Score: {{score}}</b></h4>
+                <p>Correct answers: {{correct}}</p>
+                <p class="card-text">Incorrect answers: {{wrong}}</p>
+                <p class="card-text">Percentage: {{percent}}%</p>
+                <p class="card-text">Total questions: {{total}}</p>
+                <h4><b>Good luck with the next quiz!</b></h4>
+        </div>
+    </div>
+</div>
+<img src="https://static.wikia.nocookie.net/starwars/images/4/47/Porg_wings_Fathead.png/revision/latest?cb=20180830034728" style="width: 30%;">
+
+
+{% endblock %}

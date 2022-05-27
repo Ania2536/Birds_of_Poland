@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+
+    {% if searched_bird %}
+        <center><h2>You searched for:</h2></center>
+    {{ searched_bird }}
+        
+        {% else %}
+        <center><h2>No bird found</h2></center>
+    {% endif %}
+
+{% endblock %}

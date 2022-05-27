@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+    <div class="container">
+      <center><h1>Add your bird!</h1></center>
+</div>
+
+<center><form method="post" enctype="multipart/form-data" style="margin: 20px">
+    {% csrf_token %}
+{{ form.as_p }}
+<input type="submit" class="button3">
+{{ text }}
+</form></center>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block sikorka %}
+<center><form method='post' action='' style="margin: 20px">
+    {% csrf_token %}
+<div class="container">
+      <h1>{{ quiz.name }}</h1>
+    <h3>{{ quiz.description }}</h3>
+      </div>
+<br>
+<br>
+    {% for q in questions%}
+    <div>
+      <h5><b>{{q.question}}</b></h5>
+    </div>
+        {% for a in q.answer_set.all %}
+         <div>
+            <input type="radio" name="{{q.id}}" value="{{ a.id }}" >
+            <label>{{a.answer}}</label>
+        </div>
+            <br>
+    {% endfor %}
+{% endfor %}
+    <button type="submit" class="button3">Submit</button>
+
+</form></center>
+{% endblock %}
